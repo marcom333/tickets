@@ -4,7 +4,7 @@
 use App\User;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
-
+use Carbon\Carbon;
 /*
 |--------------------------------------------------------------------------
 | Model Factories
@@ -23,5 +23,20 @@ $factory->define(User::class, function (Faker $faker) {
         'email_verified_at' => now(),
         'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         'remember_token' => Str::random(10),
+    ];
+});
+
+$factory->define(App\Concert::class, function (Faker $faker){
+    return [
+        'title'=>'Example band',
+        'subtitle'=>'with Fake Operand',
+        'date'=>Carbon::parse('+2 weeks'),
+        'ticket_price'=>2000,
+        'venue'=>'Example theatro',
+        'venue_address'=>'123 Example Lane',
+        'city'=>'fakeville',
+        'state'=>'ON',
+        'zip'=>'99999',
+        'additional_information'=>'For tickets, call (555) 555-5555.'
     ];
 });
